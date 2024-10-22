@@ -18,7 +18,7 @@ public class Signal extends Observer {
         this.count = 0;
         this.state = false;
         this.start = subject.getState();
-        this.file = "vivo.mp3";
+        this.file = "";
         this.sound = new Media(new File(file).toURI().toString());
         this.mediaPlayer = new MediaPlayer(sound);
     }

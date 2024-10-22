@@ -1,15 +1,13 @@
 package com.example.demo1;
 
-import java.util.Observer;
-
 public interface Subject {
-    //уведомления всех наблюдателей
+    // Уведомления всех наблюдателей
     public void notifyAllObserver();
 
-    //добавления наблюдателя
+    // Добавления наблюдателя
     public void attach(Observer obs);
 
-    //удаления наблюдателя
+    // Удаления наблюдателя
     public void detach(Observer obs);
 
     int getState();
