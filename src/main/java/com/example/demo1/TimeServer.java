@@ -36,9 +36,9 @@ public class TimeServer extends Observable implements Subject {
 
     @Override
     public void notifyAllObserver() {
-//        for (Observer observer : observers) {
-//            observer.update(this, null);
-//        }
+        for (Observer observer : observers) {
+            observer.update(this);
+        }
     }
 
     @Override
