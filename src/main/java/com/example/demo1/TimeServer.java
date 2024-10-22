@@ -29,6 +29,7 @@ public class TimeServer extends Observable implements Subject {
         timer.schedule(task, delay, period);
     }
 
+
     private void tick(){
         timeState++;
         notifyAllObserver();
