@@ -20,10 +20,11 @@ public class ComponentOne extends Observer {
 
     @Override
     public void update(int state) {
-        Platform.runLater(() -> {
-            elapsedSeconds++;
-            String formattedStartTime = startTime.format(formatter);
-            timeLabel.setText("Прошло " + elapsedSeconds + " с, запущено в " + formattedStartTime);
-        });
+        elapsedSeconds++;
+        String formattedStartTime = startTime.format(formatter);
+        String text = "Прошло " + elapsedSeconds + " с, запущено в " + formattedStartTime;
+
+        // Обновляем UI в потоке JavaFX Application Thread
+        Platform.runLater(() -> timeLabel.setText(text));
     }
 }
