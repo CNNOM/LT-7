@@ -31,7 +31,7 @@ public class TimeServer implements Subject {
     @Override
     public void notifyAllObserver() {
         for (Observer observer : observers) {
-            observer.update(this);
+            observer.update(timeState); // Передаем текущее состояние
         }
     }
 
@@ -43,16 +43,5 @@ public class TimeServer implements Subject {
     @Override
     public void detach(Observer obs) {
         observers.remove(obs);
-    }
-
-    @Override
-    public int getState() {
-        return timeState;
-    }
-
-    @Override
-    public void setState(int time) {
-        this.timeState = time;
-        notifyAllObserver();
     }
 }

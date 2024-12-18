@@ -13,47 +13,39 @@ public class Signal extends Observer {
     MediaPlayer mediaPlayer;
     Boolean state;
 
-
     public Signal(Subject subject) {
         this.count = 0;
         this.state = false;
-        this.start = subject.getState();
+        this.start = 0;
         this.file = "";
         this.sound = new Media(new File(file).toURI().toString());
         this.mediaPlayer = new MediaPlayer(sound);
     }
 
-
-
-    //Устанавливает количество итераций (count) и активирует сигнал (state = true).
     public void onComp(int count) {
         this.count = count;
         this.state = true;
     }
 
-    // Деактивирует сигнал (state = false) и останавливает воспроизведение медиаконтента (mediaPlayer.stop()).
     public void offComp() {
         this.state = false;
         mediaPlayer.stop();
     }
 
-    // Останавливает воспроизведение медиаконтента
     public void delComo() {
         mediaPlayer.stop();
     }
 
-
-    // Этот метод вызывается, когда объект Subject уведомляет наблюдателей об изменении состояния.
     @Override
-    public void update(Subject st) {
-        if (state) {
-            if (st.getState() == start + count) {
+    public void update(int state) {
+        if (this.state) {
+            if (state == start + count) {
                 mediaPlayer.play();
                 start += count;
             }
-            if (st.getState() == start + 2){
+            if (state == start + 2) {
                 mediaPlayer.stop();
-                state = false;
+                this.state = false;
             }
         }
     }

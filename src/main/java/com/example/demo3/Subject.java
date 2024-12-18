@@ -10,7 +10,4 @@ public interface Subject {
     // Удаления наблюдателя
     public void detach(Observer obs);
 
-    int getState();
-
-    void setState(int time);
 }

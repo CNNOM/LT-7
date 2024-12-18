@@ -13,14 +13,13 @@ public class ComponentOne extends Observer {
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     public ComponentOne(Subject subject, Label timeLabel) {
-        this.subject = subject;
         this.timeLabel = timeLabel;
         this.startTime = LocalTime.now();
         subject.attach(this);
     }
 
     @Override
-    public void update(Subject st) {
+    public void update(int state) {
         Platform.runLater(() -> {
             elapsedSeconds++;
             String formattedStartTime = startTime.format(formatter);

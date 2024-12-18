@@ -1,7 +1,6 @@
 package com.example.demo3;
 
 import javafx.animation.PathTransition;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -15,7 +14,6 @@ public class ComponentThree extends Observer {
     private static final int ANIMATION_INTERVAL = 20; // Интервал анимации в секундах
 
     public ComponentThree(Subject subject, ImageView imageView) {
-        this.subject = subject;
         this.imageView = imageView;
         subject.attach(this);
 
@@ -35,11 +33,10 @@ public class ComponentThree extends Observer {
         pathTransition.setNode(imageView);
         pathTransition.setCycleCount(1); // Анимация будет проигрываться один раз
         pathTransition.playFromStart();
-
     }
 
     @Override
-    public void update(Subject st) {
+    public void update(int state) {
         elapsedSeconds++;
         if (elapsedSeconds % ANIMATION_INTERVAL == 0) {
             // Запускаем анимацию
