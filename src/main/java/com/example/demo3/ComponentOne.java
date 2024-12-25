@@ -24,7 +24,6 @@ public class ComponentOne extends Observer {
         String formattedStartTime = startTime.format(formatter);
         String text = "Прошло " + elapsedSeconds + " с, запущено в " + formattedStartTime;
 
-        // Обновляем UI в потоке JavaFX Application Thread
-        Platform.runLater(() -> timeLabel.setText(text));
+        timeLabel.setText(text);
     }
 }
